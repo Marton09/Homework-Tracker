@@ -403,7 +403,12 @@ public class StudyBuddyApp {
             System.out.print(prompt);
             String s = scanner.nextLine().trim();
             try {
-                return LocalDate.parse(s);
+                LocalDate date = LocalDate.parse(s);
+                if (date.isBefore(LocalDate.now())) {
+                    System.out.println("Date cannot be in the past. Please enter today or a future date.");
+                } else {
+                    return date;
+                }
             } catch (Exception e) {
                 System.out.println("Use format YYYY-MM-DD (example: 2026-02-03).");
             }
