@@ -195,7 +195,12 @@ public class StudyBuddyApp {
         System.out.println("3) DONE");
         int s = readInt("Choose status: ", 1, 3);
         t.setStatus(Status.values()[s - 1]);
-        System.out.println("Status updated.");
+        if (t.getStatus() == Status.DONE) {
+            tasks.remove(t);
+            System.out.println("Task marked as DONE and removed from your list.");
+        } else {
+            System.out.println("Status updated.");
+        }
     }
 
     // ---------- VIEW ----------
