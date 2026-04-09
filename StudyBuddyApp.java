@@ -80,7 +80,7 @@ public class StudyBuddyApp {
             System.out.println("No tasks to edit.");
             return;
         }
-        viewAllTasks();
+        printAllTasks();
         int id = readInt("Enter task ID to edit: ", 1, Integer.MAX_VALUE);
         Task t = findById(id);
         if (t == null) {
@@ -156,7 +156,7 @@ public class StudyBuddyApp {
             System.out.println("No tasks to delete.");
             return;
         }
-        viewAllTasks();
+        printAllTasks();
         int id = readInt("Enter task ID to delete: ", 1, Integer.MAX_VALUE);
         Task t = findById(id);
         if (t == null) {
@@ -181,7 +181,7 @@ public class StudyBuddyApp {
             System.out.println("No tasks to mark.");
             return;
         }
-        viewAllTasks();
+        printAllTasks();
         int id = readInt("Enter task ID: ", 1, Integer.MAX_VALUE);
         Task t = findById(id);
         if (t == null) {
@@ -199,6 +199,16 @@ public class StudyBuddyApp {
     }
 
     // ---------- VIEW ----------
+
+    private static void printAllTasks() {
+        System.out.println("\n--- Tasks ---");
+        for (Task t : tasks) {
+            System.out.println("#" + t.getId() + " | " + t.getType() + " | " + t.getTitle());
+            System.out.println("Due: " + t.getDueDate() + " | Status: " + t.getStatus());
+            System.out.println("Details: " + t.getSummaryLine());
+            System.out.println();
+        }
+    }
 
     private static void viewAllTasks() {
         if (tasks.isEmpty()) {
